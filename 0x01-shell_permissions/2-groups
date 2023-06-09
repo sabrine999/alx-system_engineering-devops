@@ -1,3 +1,2 @@
-#!bin/bash
-2-groups
-
+#!/bin/bash
+2-group
