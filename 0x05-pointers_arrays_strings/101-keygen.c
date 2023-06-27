@@ -16,7 +16,7 @@ int main(void)
     srand(time(NULL));
     while (sum <= 2645)
     {
-        c = (rand() % 127) + 1; // Generate random character from 1 to 127 (excluding null byte)
+        c = (rand() % 127) + 1; /* Generate random character from 1 to 127 (excluding null byte) */
         sum += c;
         putchar(c);
     }
