@@ -1,46 +1,66 @@
 #include "main.h"
 
 /**
- * _atoi - converts a string to an integer
- * @s: string to be converted
- *
- * Return: the int converted from the string
+ * str_len - calculate the length of a string
+ * @s: the string
+ * Return: return the length
  */
-int _atoi(char *s)
+
+int str_len(char *s)
 {
-	int i, d, n, len, f, digit;
+	int i;
 
 	i = 0;
-	d = 0;
-	n = 0;
-	len = 0;
-	f = 0;
-	digit = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
 
-	while (s[len] != '\0')
-		len++;
+/**
+ * _atoi - converts a string to int
+ *
+ * @s: string to convert
+ *
+ * Return: return the value of the string converted
+ */
 
-	while (i < len && f == 0)
+int _atoi(char *s)
+{
+	int result;
+	int sign;
+	int i;
+	int len;
+
+	i = 0;
+	len = str_len(s);
+	sign = 1;
+	result = 0;
+	while (s[i] < '0' || s[i] > '9')
 	{
 		if (s[i] == '-')
-			++d;
-
-		if (s[i] >= '0' && s[i] <= '9')
-		{
-			digit = s[i] - '0';
-			if (d % 2)
-				digit = -digit;
-			n = n * 10 + digit;
-			f = 1;
-			if (s[i + 1] < '0' || s[i + 1] > '9')
-				break;
-			f = 0;
-		}
+			sign *= -1;
 		i++;
 	}
-
-	if (f == 0)
-		return (0);
-
-	return (n);
+	if (len > i)
+	{
+		if (sign == -1)
+		{
+			while (s[i] >= '0' && s[i] <= '9')
+			{
+				result *= 10;
+				result -= s[i] - 48;
+				i++;
+			}
+		}
+		else
+		{
+			while (s[i] >= '0' && s[i] <= '9')
+			{
+				result *= 10;
+				result += s[i] - 48;
+				i++;
+			}
+		}
+	}
+	return (result);
 }
