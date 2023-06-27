@@ -10,16 +10,16 @@
  */
 int main(void)
 {
-	int sum;
-	char c;
+    int sum = 0;
+    char c;
 
-	srand(time(NULL));
-	while (sum <= 2645)
-	{
-		c = rand() % 128;
-		sum += c;
-		putchar(c);
-	}
-	putchar(2772 - sum);
-	return (0);
+    srand(time(NULL));
+    while (sum <= 2645)
+    {
+        c = (rand() % 127) + 1; // Generate random character from 1 to 127 (excluding null byte)
+        sum += c;
+        putchar(c);
+    }
+    putchar(2772 - sum);
+    return 0;
 }
